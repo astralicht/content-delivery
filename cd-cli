@@ -9,5 +9,5 @@ if (!in_array($argv[1], $functions, true)) return print "\nNon-existent function
 $functions[$argv[1]];
 
 function serve() {
-    exec("php -S 127.0.0.1:8000");
+    exec("php -S 127.0.0.1:8080");
 }

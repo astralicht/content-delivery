@@ -1,0 +1,11 @@
+cd-cli
+ - new commands to generate controllers and models files, etc., with template in templates folder.
+preprocessing/templating, and logic (e.g. controllers, models)
+ - these are separate from content delivery.
+ - use file_get_contents() for preprocessing. readfile() to output file directly.
+
+// Error control operator (i.e. @) before file_get_contents function supresses warnings
+// https://www.php.net/manual/en/language.operators.errorcontrol.php
+
+content delivery module
+ - add support for multiple filetypes (e.g. images, pdf)
