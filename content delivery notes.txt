@@ -9,3 +9,4 @@ preprocessing/templating, and logic (e.g. controllers, models)
 
 content delivery module
  - add support for multiple filetypes (e.g. images, pdf)
+ - only supports GET requests

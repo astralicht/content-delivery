@@ -7,23 +7,26 @@ $HOST = $_SERVER["HTTP_HOST"];
 $URI = $_SERVER["REQUEST_URI"];
 $REQUEST_TYPE = $_SERVER["REQUEST_METHOD"];
 
-$Routes = new Routes();
+$URI = (explode("/", $URI));
 
-var_dump($_GET);
+for ($i = 0; $i < Config::$URI_SHIFT; $i++) array_shift($URI);
 
-$filePath = $Routes->pull($URI, $REQUEST_TYPE);
+$URI = implode("/", $URI);
+$filePath = Routes::search($URI, $REQUEST_TYPE);
 
-if ($filePath == "" || $filePath == null) return @readfile($Routes->pull("/404", "GET"));
+if ($filePath == "" || $filePath == null) $filePath = Routes::search("404", "GET");
 
-$response = @readfile($filePath);
+if (isset($_GET["type"])) {
+    $imginfo = getimagesize($filePath);
+    header("Content-type: {$imginfo['mime']}");
+}
 
-if ($response === false) return @readfile($Routes->pull("/404", "GET"));
+$PAGE_TITLE = "";
+$APP_NAME = "";
+$PAGE_BODY = "";
 
-// $remoteImage = "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Banana-Single.jpg/2324px-Banana-Single.jpg";
-// $imginfo = getimagesize($remoteImage);
-// header("Content-type: {$imginfo['mime']}");
-// readfile($remoteImage);
+ob_start();
+include_once($filePath);
+$PAGE_BODY = ob_get_clean();
 
-die;
-
-echo $Content;
+include_once("App.php");
