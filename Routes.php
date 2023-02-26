@@ -1,22 +1,27 @@
 <?php
 
 /**
- * @class Routes
+ * Contains array of routes and function for retrieving routes.
  */
 class Routes {
 
     /**
-     * 
+     * @var array
+     * Contains array of filepaths and allowed request methods.
      */
     private static $routes = [
-        "/" => ["public/html/pages/home.html", ["GET"], true],
-        "/404" => ["public/html/error/404.html", ["GET"]],
-        "/403" => ["public/html/error/403.html", ["GET"]],
-        "/500" => ["public/html/error/500.html", ["GET"]],
+        "403" => ["public/pages/error/403.php", ["GET"]],
+        "404" => ["public/pages/error/404.php", ["GET"]],
+        "500" => ["public/pages/error/500.php", ["GET"]],
+        "" => ["public/pages/home.php", ["GET"]],
+        "api/test" => ["php/Controllers/auth.php", ["POST"]],
     ];
 
 
-    function pull($URI, $REQUEST_METHOD) {
+    /**
+     * Takes in URI and request method, returns either a route or null.
+     */
+    static function search($URI, $REQUEST_METHOD) {
         $route = self::searchKey($URI);
         $pathIndex = 0;
         $methodsIndex = 1;
@@ -27,15 +32,11 @@ class Routes {
 
         if (!in_array($REQUEST_METHOD, $requestMethods)) return null;
 
-        $filePath = $route[$pathIndex];
-        
-        return @file_get_contents($filePath);
-        // Error control operator (i.e. @) before file_get_contents function supresses warnings
-        // https://www.php.net/manual/en/language.operators.errorcontrol.php
+        return $route[$pathIndex];
     }
 
 
-    function searchKey($URI) {
+    static function searchKey($URI) {
         $keys = array_keys(self::$routes);
         $route = null;
 

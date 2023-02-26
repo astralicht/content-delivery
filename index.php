@@ -2,15 +2,31 @@
 
 require_once("Config.php");
 require_once("Routes.php");
-require_once("Preprocessor.php");
 
 $HOST = $_SERVER["HTTP_HOST"];
 $URI = $_SERVER["REQUEST_URI"];
 $REQUEST_TYPE = $_SERVER["REQUEST_METHOD"];
 
-$Routes = new Routes();
-$Content = $Routes->pull($URI, $REQUEST_TYPE);
+$URI = (explode("/", $URI));
 
-if ($Content === null) echo $Routes->pull("/404", "GET");
+for ($i = 0; $i < Config::$URI_SHIFT; $i++) array_shift($URI);
 
-echo $Content;
+$URI = implode("/", $URI);
+$filePath = Routes::search($URI, $REQUEST_TYPE);
+
+if ($filePath == "" || $filePath == null) $filePath = Routes::search("404", "GET");
+
+if (isset($_GET["type"])) {
+    $imginfo = getimagesize($filePath);
+    header("Content-type: {$imginfo['mime']}");
+}
+
+$PAGE_TITLE = "";
+$APP_NAME = "";
+$PAGE_BODY = "";
+
+ob_start();
+include_once($filePath);
+$PAGE_BODY = ob_get_clean();
+
+include_once("App.php");
