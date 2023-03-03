@@ -7,11 +7,13 @@
     --thin-padding: .3em .5em;
     --default-padding: .5em .7em;
     --wide-padding: .7em 1em;
+    --wider-padding: .7em 2em;
     --even-padding: 1em;
     --even-padding-half: .5em;
     --thin-margin: .3em .5em;
     --default-margin: .5em .7em;
     --wide-margin: .7em 1em;
+    --wider-margin: .7em 2em;
     --even-margin: 1em;
     --default-gap: .5em;
 
@@ -22,6 +24,7 @@
     --alert-color: rgb(238, 165, 81);
     --danger-color: rgb(218, 72, 72);
     --dark-color: #333;
+    --darker-color: #222;
     --secondary-color: #838383;
     --light-color: #F0F0F0;
     --white-color: #FFF;
@@ -29,6 +32,10 @@
     --box-shadow: 0 0 .2em rgba(0, 0, 0, .3);
 
     --default-font: 'Noto Sans', sans-serif;
+    --default-font-size: 1em;
+
+    --hover-toggle-padding: .5em 0 0 0;
+    --click-toggle-padding: .5em 0 0 0;
 }
 
 * {
@@ -69,7 +76,6 @@ form {
 }
 
 [input]:focus {
-    outline: 0;
     box-shadow: 0 0 .2em var(--primary-color);
 }
 
@@ -201,6 +207,10 @@ button:hover, button:active {
     flex-shrink: 2;
 }
 
+[flex-wrap] {
+    flex-wrap: wrap;
+}
+
 
 /* Card */
 .card {
@@ -213,13 +223,98 @@ button:hover, button:active {
 
 
 /* Table */
+table {
+    background-color: var(--secondary-color);
+}
 th, td {
     padding: var(--default-padding);
     text-align: left;
-    border-radius: var(--border-radius);
 }
 tr:nth-child(odd) {
     background-color: var(--light-color);
+}
+
+
+/* Select */
+select {
+    padding: var(--default-padding);
+    font-size: var(--default-font-size);
+    border-radius: var(--border-radius);
+}
+
+
+/* Hover Toggle */
+hover-toggle {
+    cursor: pointer;
+    position: relative;
+}
+
+hover-toggle > title {
+    display: block;
+    padding: var(--default-padding);
+    border-radius: var(--border-radius);
+}
+
+hover-toggle > container {
+    display: none;
+    position: absolute;
+    padding: var(--hover-toggle-padding);
+    border-radius: var(--border-radius);
+}
+
+hover-toggle > container > item:hover {
+    background-color: var(--darker-color);
+}
+
+hover-toggle:hover > container {
+    display: block;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+}
+
+hover-toggle > container > item {
+    display: block;
+    padding: var(--default-padding);
+    min-width: var(--default-min-width);
+    width: var(--default-width);
+}
+
+
+/* Click Toggle */
+.click-toggle {
+    cursor: pointer;
+    display: block;
+    padding: 0;
+}
+
+.click-toggle > title {
+    display: block;
+    border-radius: var(--border-radius);
+    padding: var(--default-padding);
+}
+
+.click-toggle > container {
+    display: none;
+    position: absolute;
+    padding: var(--click-toggle-padding);
+    border-radius: var(--border-radius);
+}
+
+.click-toggle > container > item:hover {
+    background-color: var(--darker-color);
+}
+
+.click-toggle:focus > container {
+    display: block;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+}
+
+.click-toggle > container > item {
+    display: block;
+    padding: var(--default-padding);
+    min-width: var(--default-min-width);
+    width: var(--default-width);
 }
 
 
@@ -272,6 +367,10 @@ tr:nth-child(odd) {
     padding: var(--wide-padding);
 }
 
+[padding-wider] {
+    padding: var(--wider-padding);
+}
+
 
 /* Margin */
 [no-margin] {
@@ -308,6 +407,10 @@ tr:nth-child(odd) {
 
 [margin-thin] {
     margin: var(--default-margin);
+}
+
+[margin-wider] {
+    margin: var(--wider-margin);
 }
 
 
@@ -436,4 +539,21 @@ tr:nth-child(odd) {
 /* Miscellaneous */
 [pointable] {
     cursor: pointer;
+}
+
+[overflow="auto"] {
+    overflow: auto;
+}
+
+
+/* Responsive */
+@media only screen and (max-width: 768px) {
+    :root {
+        --default-min-width: 100%;
+        --default-width: 100%;
+    }
+
+    .main-content {
+        padding: 0 1em 0 1em;
+    }
 }
