@@ -10,9 +10,7 @@ $PAGE_TITLE = "Home";
 </style>
 
 <div flex="v" no-gap>
-    <div flex="h" v-center padding-wider primary white-text>
-        <span text="medium"><b>Content Delivery</b> Framework</span>
-    </div>
+    <?php include_once("templates/_thin_nav.php"); ?>
     <div class="main-content" flex="v" padding-wider flex-grow="1">
         <header>
             <h1>🍌 banana 🍌</h1>
