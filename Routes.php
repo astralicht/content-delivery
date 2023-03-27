@@ -1,4 +1,4 @@
-<?php
+<?php   
 
 /**
  * Contains array of routes and function for retrieving routes.
@@ -14,25 +14,28 @@ class Routes {
         "404" => ["public/pages/error/404.php", ["GET"]],
         "500" => ["public/pages/error/500.php", ["GET"]],
         "" => ["public/pages/home.php", ["GET"]],
-        "api/test" => ["php/Controllers/auth.php", ["POST"]],
+        "api" => ["public/pages/api.php", ["GET"]],
+        "api/test" => ["php/Controllers/test.php", [
+            "GET" => "fetch",
+            "PUT" => "update",
+        ], "Controllers\Test"],
     ];
 
 
     /**
      * Takes in URI and request method, returns either a route or null.
      */
-    static function search($URI, $REQUEST_METHOD) {
+    static function search($URI, $REQUEST_METHOD = "GET") {
         $route = self::searchKey($URI);
-        $pathIndex = 0;
         $methodsIndex = 1;
 
         if ($route === null) return null;
 
-        $requestMethods = $route[$methodsIndex];
+        $methodsRoutes = $route[$methodsIndex];
+        
+        if (!(in_array($REQUEST_METHOD, $methodsRoutes) == true || in_array($REQUEST_METHOD, array_keys($methodsRoutes)) == true)) return null;
 
-        if (!in_array($REQUEST_METHOD, $requestMethods)) return null;
-
-        return $route[$pathIndex];
+        return $route;
     }
 
 
