@@ -11,7 +11,7 @@ class Auth {
                     WHERE `date_removed` IS NULL
                     AND `email`=?";
 
-        $result = \Model::getResult($query, $email);
+        $result = \Models\Model::getResult($query, $email);
 
         if ($result["status"] === 200) {
             // Enter code here
