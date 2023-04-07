@@ -1,1 +1,0 @@
-make rendering and templating engine. sample is in pages folder already.
