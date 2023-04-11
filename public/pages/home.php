@@ -17,22 +17,12 @@ $PAGE_TITLE = "Home";
         </header>
         <section>
             <div flex="h" flex-wrap>
-                <div class="card" dark padding-wider>
-                    <span text="medium">Banana</span>
-                    <img src="public/files/banana-rotate.gif" alt="banana" width="100%">
-                </div>
-                <div class="card" dark padding-wider>
-                    <span text="medium">Banana</span>
-                    <img src="public/files/banana-rotate.gif" alt="banana" width="100%">
-                </div>
-                <div class="card" dark padding-wider>
-                    <span text="medium">Banana</span>
-                    <img src="public/files/banana-rotate.gif" alt="banana" width="100%">
-                </div>
-                <div class="card" dark padding-wider>
-                    <span text="medium">Banana</span>
-                    <img src="public/files/banana-rotate.gif" alt="banana" width="100%">
-                </div>
+                <?php for ($i = 0; $i < 4; $i++) { ?>
+                    <div class="card" dark padding-wider>
+                        <span text="medium">Hotdog</span>
+                        <img src="public/files/hotdog-roblox.gif" alt="hotdog" width="100%">
+                    </div>
+                <?php } ?>
             </div>
         </section>
 
