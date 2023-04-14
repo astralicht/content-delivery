@@ -12,3 +12,8 @@ There are two types of route formats for CDF:
 >     ], "{Class name (include namespace if present)}"],
  2. Route to View
 >     "{URI}" => ["{filepath to controller/route/view}", ["{HTTP Request Type (GET)}"]],
+
+## Database Support
+CDF (as of release Dev-03) does not yet have support for other databases except for MySQL. 
+
+## 
