@@ -1,6 +1,9 @@
 # Content Delivery Framework
 *A small and simple PHP MVC framework for content delivery.*
 
+# Installation
+To install, navigate to the latest release and download it from there. Composer is **off the table** as of _April 14, 2023_ but should future versions need it, it will be implemented.
+
 ## Routing
 CDF has support for separate HTTP requests *(GET, POST, PUT, DELETE, etc.)* as long as the request type is *explicitly included* in the route.
 ### Route Format
