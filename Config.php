@@ -1,5 +1,10 @@
 <?php
 
+namespace cdf;
+
+/**
+ * Contains app config
+ */
 class Config {
 
     static $DOCUMENT_ROOT = "/content-delivery/public/";

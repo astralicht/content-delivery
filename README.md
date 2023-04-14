@@ -16,4 +16,6 @@ There are two types of route formats for CDF:
 ## Database Support
 CDF (as of release Dev-03) does not yet have support for other databases except for MySQL. 
 
-## 
+## Controllers and Models
+When creating a new controller or model manually, make sure to include their respective namespaces. (e.g. _cdf\Controllers_ or _cdf\Models_)
+Until a command line interface has been created, this will have to be taken note of in case something does not work.

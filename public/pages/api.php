@@ -2,7 +2,7 @@
 $PAGE_TITLE = "API Test";
 ?>
 
-<script src="<?= Config::$DOCUMENT_ROOT . "scripts/fetch.js" ?>"></script>
+<script src="<?= \cdf\Config::$DOCUMENT_ROOT . "scripts/fetch.js" ?>"></script>
 
 <style>
     body {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Controllers;
+namespace cdf\Controllers;
 
 class Test {
     

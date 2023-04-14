@@ -1,4 +1,6 @@
-<?php   
+<?php
+
+namespace cdf;
 
 /**
  * Contains array of routes and function for retrieving routes.

@@ -1,5 +1,7 @@
 <?php
 
+namespace cdf;
+
 require_once("Config.php");
 require_once("Routes.php");
 
@@ -15,10 +17,10 @@ $REQUEST_TYPE = !isset($_SERVER["HTTP_REQUEST_TYPE"]) ?: $_SERVER["HTTP_REQUEST_
 
 $URI = (explode("/", $URI));
 
-for ($i = 0; $i < Config::$URI_SHIFT; $i++) array_shift($URI);
+for ($i = 0; $i < \cdf\Config::$URI_SHIFT; $i++) array_shift($URI);
 
 $URI = implode("/", $URI);
-$route = Routes::search($URI, $REQUEST_METHOD);
+$route = \cdf\Routes::search($URI, $REQUEST_METHOD);
 
 if ($route == null || $route[PATH_INDEX] == "" || $route[PATH_INDEX] == null) {
     if ($REQUEST_TYPE === "API") {
@@ -26,7 +28,7 @@ if ($route == null || $route[PATH_INDEX] == "" || $route[PATH_INDEX] == null) {
         return;
     }
 
-    $route = Routes::search("404");
+    $route = \cdf\Routes::search("404");
     renderPage($route[PATH_INDEX]);
 }
 

@@ -1,9 +1,12 @@
 <?php
 
-namespace Models;
+namespace cdf\Models;
 
 include_once("Config.php");
 
+/**
+ * Abstact class for all models containing 
+ */
 class Model {
 
     private static $dbConnOverride = null;
@@ -22,9 +25,9 @@ class Model {
 
     static function getResult($query, $params = null) {
         if (self::$dbConnOverride !== null) {
-            $conn = \Config::openDbConn(self::$dbConnOverride);
+            $conn = \cdf\Config::openDbConn(self::$dbConnOverride);
         } else {
-            $conn = \Config::openDbConn();
+            $conn = \cdf\Config::openDbConn();
         }
 
         try {
