@@ -1,7 +1,7 @@
 # Content Delivery Framework
 *A small and simple PHP MVC framework for content delivery.*
 
-# Installation
+## Installation
 To install, navigate to the latest release and download it from there. Composer is **off the table** as of _April 14, 2023_ but should future versions need it, it will be implemented.
 
 ## Routing
