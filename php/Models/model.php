@@ -36,11 +36,11 @@ class Model {
             return ["status" => 500, "message" => $e->getMessage(), "stack_trace" => $e->getTraceAsString(), "rows" => []];
         }
         
-        if ($params != null && gettype($params) !== "Array") {
+        if ($params != null && gettype($params) !== "array") {
             return ["status" => 500, "message" => "Parameters are not in an array."];
         }
 
-        if ($params != null && gettype($params) === "Array") {
+        if ($params != null && gettype($params) === "array") {
             $literals = "";
 
             for ($index = 0; $index < count($params); $index++) {
