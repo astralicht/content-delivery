@@ -1,5 +1,3 @@
-## All further updates and releases will be made by @raph0ryte (https://github.com/raph0ryte/), still with the same project name.
-
 # Content Delivery Framework
 *A small and simple PHP MVC framework for content delivery.*
 
