@@ -32,7 +32,7 @@ if ($route == null || $route[PATH_INDEX] == "" || $route[PATH_INDEX] == null) {
     renderPage($route[PATH_INDEX]);
 }
 
-if ($REQUEST_TYPE === "API") {
+if ($REQUEST_TYPE === "API" || (isset($route[API_FLAG_INDEX]) && $route[API_FLAG_INDEX] === true)) {
     include_once($route[PATH_INDEX]);
 
     $class = new $route[CLASS_INDEX]();
