@@ -12,7 +12,7 @@ There are two types of route formats for CDF:
  1. Route to Controller/Model
 >     "{URI}" => ["{filepath to controller/route/view}", [
 >         "{HTTP Request Type (GET, POST, etc.)}" => "{Function name in Class}",
->     ], "{Class name (include namespace if present)}"],
+>     ], "{Class name (include namespace if present)}", {boolean value but cdf only accepts if this value is true}],
  2. Route to View
 >     "{URI}" => ["{filepath to controller/route/view}", ["{HTTP Request Type (GET)}"]],
 
