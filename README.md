@@ -22,3 +22,6 @@ CDF (as of release Dev-03) does not yet have support for other databases except 
 ## Controllers and Models
 When creating a new controller or model manually, make sure to include their respective namespaces. (e.g. _cdf\Controllers_ or _cdf\Models_)
 Until a command line interface has been created, this will have to be taken note of in case something does not work.
+
+## Development Server
+To start the PHP's development server, you can type in _php cdf serve_ in your terminal.
