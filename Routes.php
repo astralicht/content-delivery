@@ -20,7 +20,7 @@ class Routes {
         "api/test" => ["php/Controllers/test.php", [
             "GET" => "fetch",
             "PUT" => "update",
-        ], "Controllers\Test", true],
+        ], "cdf\Controllers\Test", true],
     ];
 
 
