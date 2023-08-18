@@ -9,7 +9,6 @@ class Config {
 
     static $DOCUMENT_ROOT = "public/";
     static $APP_NAME = "Content Delivery";
-    static $URI_SHIFT = 2;
     static $db_config = [
             "host" => "localhost",
             "username" => "root",
