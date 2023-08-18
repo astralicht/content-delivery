@@ -23,7 +23,7 @@ $URI = implode("/", $URI);
 $route = \cdf\Routes::search($URI, $REQUEST_METHOD);
 
 if ($route == null || $route[PATH_INDEX] == "" || $route[PATH_INDEX] == null) {
-    if ($REQUEST_TYPE === "API") {
+    if ($REQUEST_TYPE === "API" || (isset($route[API_FLAG_INDEX]) && $route[API_FLAG_INDEX] === true)) {
         echo json_encode(["status" => 404, "message" => "Route does not exist."]);
         return;
     }
