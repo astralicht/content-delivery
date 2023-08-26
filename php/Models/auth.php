@@ -2,6 +2,8 @@
 
 namespace cdf\Models;
 
+include_once("model.php");
+
 class Auth {
 
     function searchUser($email) {
