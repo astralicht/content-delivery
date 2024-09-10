@@ -9,12 +9,14 @@ class Auth {
     function searchUser($email) {
         $query = "SELECT * FROM users
                     WHERE `date_removed` IS NULL
-                    AND `email`=?";
+                    AND `email`=:email";
 
-        $result = \cdf\Models\Model::getResult($query, $email);
+        $result = \cdf\Models\Model::getResult($query, [":email" => $email]);
 
         if ($result["status"] === 200) {
-            // Enter code here
+            foreach ($result["rows"] as $row) {
+                var_dump($row);
+            }
         }
     }
 
