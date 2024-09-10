@@ -1,9 +1,10 @@
 function sendRequest(
+    endpoint = undefined,
     method = undefined,
     headers = undefined,
     callback = null)
 {
-    fetch("api/test", {
+    fetch(endpoint, {
         "method": method,
         "headers": headers
     }).then(response => response.text()).then(text => {
