@@ -24,14 +24,18 @@ class Model {
     }
 
     static function getResult($query, $params = null) {
-        if (self::$dbConnOverride !== null) {
-            $conn = \cdf\Config::openDbConn(self::$dbConnOverride);
-        } else {
-            $conn = \cdf\Config::openDbConn();
+        try {
+            if (self::$dbConnOverride !== null) {
+                \cdf\Config::openDbConn(self::$dbConnOverride);
+            } else {
+                \cdf\Config::openDbConn();
+            }
+        } catch (\PDOException $e) {
+            return ["status" => 500, "message" => $e->getMessage(), "stack_trace" => $e->getTraceAsString(), "rows" => []];
         }
 
         try {
-            $query = $conn->prepare($query);
+            $query = \cdf\Config::$dbConn->prepare($query);
         } catch (\Exception $e) {
             return ["status" => 500, "message" => $e->getMessage(), "stack_trace" => $e->getTraceAsString(), "rows" => []];
         }
@@ -40,31 +44,15 @@ class Model {
             return ["status" => 500, "message" => "Parameters are not in an array."];
         }
 
-        if ($params != null && gettype($params) === "array") {
-            $literals = "";
-
-            for ($index = 0; $index < count($params); $index++) {
-                $literals .= "s";
-            }
-
-            $query->bind_param($literals, ...$params);
-        }
-        
-
         try {
-            $query->execute();
-        } catch (\Exception $e) {
+            $query->execute($params);
+        } catch (\PDOException $e) {
             return ["status" => 500, "message" => $e->getMessage(), "stack_trace" => $e->getTraceAsString(), "rows" => []];
         }
 
-        $result = $query->get_result();
+        $rows = $query->fetchAll(\PDO::FETCH_ASSOC);
 
-        $rows = [];
-        while ($row = $result->fetch_assoc()) {
-            $rows[] = $row;
-        }
-
-        $conn->close();
+        \cdf\Config::closeDbConn();
 
         return ["status" => 200, "rows" => $rows];
     }
