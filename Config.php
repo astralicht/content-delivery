@@ -9,19 +9,28 @@ class Config {
 
     static $DOCUMENT_ROOT = "public/";
     static $APP_NAME = "Content Delivery";
-    static $db_config = [
+    static $dbConfig = [
             "host" => "localhost",
             "username" => "root",
             "password" => "",
-            "db_name" => "",
+            "db_name" => "test",
         ];
+    static $dbConn = null;
 
-    /**
-     * Returns a new mysqli object using data from config.
-     * Can be replaced with another kind of database connection.
-     */
-    static public function openDbConn(): \mysqli {
-        return new \mysqli(self::$db_config["host"], self::$db_config["username"], self::$db_config["password"], self::$db_config["db_name"]);
+    static public function openDbConn() {
+        $db_config = self::$dbConfig;
+        
+        $host = $db_config["host"];
+        $db_name = $db_config["db_name"];
+        $username = $db_config["username"];
+        $password = $db_config["password"];
+
+        self::$dbConn = new \PDO("mysql:host=$host;dbname=$db_name", $username, $password);
+        self::$dbConn->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+    }
+
+    static public function closeDbConn() {
+        self::$dbConn = null;
     }
 
 }
