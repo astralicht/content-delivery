@@ -17,7 +17,7 @@ There are two types of route formats for CDF:
 >     "{URI}" => ["{filepath to controller/route/view}", ["{HTTP Request Type (GET)}"]],
 
 ## Database Support
-CDF (as of release Dev-03) does not yet have support for other databases except for MySQL. 
+CDF (as of release Dev-05, subject to testing) now has support for database connections other than mysqli.
 
 ## Controllers and Models
 When creating a new controller or model manually, make sure to include their respective namespaces. (e.g. _cdf\Controllers_ or _cdf\Models_)
