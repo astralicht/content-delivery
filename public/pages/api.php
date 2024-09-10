@@ -2,7 +2,7 @@
 $PAGE_TITLE = "API Test";
 ?>
 
-<script src="<?= \cdf\Config::$DOCUMENT_ROOT . "scripts/fetch.js" ?>"></script>
+<script src="/public/scripts/fetch.js"></script>
 
 <style>
     body {
@@ -26,7 +26,8 @@ $PAGE_TITLE = "API Test";
     }
 
     sendRequest(
-        "POST",
+        "api/test",
+        "GET",
         {
             "Content-Type": "application/json",
             "Request-Type": "API",
