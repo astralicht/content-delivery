@@ -1,0 +1,10 @@
+{
+    "name": "astralicht/content-delivery",
+    "description": "A small and simple PHP MVC framework for content delivery.",
+    "type": "project",
+    "license": "MIT",
+    "minimum-stability": "stable",
+    "require": {
+        "php": ">=8.0"
+    }
+}
