@@ -2,7 +2,7 @@
 *A small and simple PHP MVC framework for content delivery.*
 
 ## Installation
-To install, navigate to the latest release and download it from there. Composer is **off the table** as of _April 14, 2023_ but should future versions need it, it will be implemented.
+To install, navigate to the latest release and download it from there. Composer is **now supported** as of _October 1, 2024_. To install with Composer, run _composer create-project astralicht/content-delivery_.
 
 ## Routing
 CDF has support for separate HTTP requests *(GET, POST, PUT, DELETE, etc.)* as long as the request type is *explicitly included* in the route.
