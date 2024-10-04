@@ -181,19 +181,19 @@ select {
 /*****/
 
 /* Font/Text */
-h4 {
+h4, [medium] {
     font-size: 1.5rem;
 }
 
-h3 {
+h3, [big] {
     font-size: 2rem;
 }
 
-h2 {
+h2, [bigger] {
     font-size: 2.5rem;
 }
 
-h1 {
+h1, [biggest] {
     font-size: 3rem;
 }
 
